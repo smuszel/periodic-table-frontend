@@ -5,6 +5,18 @@ export const techs = [
         stars: '121,312',
         icon: require('../assets/react.svg')
     },
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
     {
         name: 'redux',
         title: 'Rd',

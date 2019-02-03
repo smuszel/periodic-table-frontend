@@ -1,12 +1,57 @@
 .table-container {
+    --edge: 70px;
     display: grid;
-    width: 300px;
-    height: 300px;
     grid-gap: 5px;
-    grid-template-areas: 
-        "a . a"
+    grid-template-columns: repeat(18, var(--edge));
+    grid-template-rows: repeat(6, calc(var(--edge) * 1.2));
 }
 
 .tech-element-container {
-    grid-area: "a";
+    /* grid-area: "a"; */
+    border: 1px solid purple;
+    padding: 3px;
 }
+
+/* .tech-element-container > .face {
+    display: flex;
+    justify-content: space-between;
+} */
+
+/* .tech-element-container > .footer {
+    font: arial;
+} */
+
+.tech-element-container > span > h1 {
+    display: inline;
+    font-size: 30px;
+    font-family: Arial;
+}
+
+.tech-element-container > span > svg {
+    width: 15px;
+    float: right;
+}
+
+.tech-element-container > div > {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tech-element-container > div > h2 {
+    display: flex;
+    justify-content: center;
+    font-size: 11px;
+}
+
+.tech-element-container > div > p {
+    display: flex;
+    justify-content: center;
+    font-size: 9px
+}
+
+.tech-element-container > div > p > svg {
+    width: 9px;
+    height: 9px;
+}
+
