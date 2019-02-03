@@ -1,5 +1,6 @@
 import React from 'react';
-import RD from 'react-dom';
+import ReactDOM from 'react-dom';
 import { PeriodicTable } from './PeriodicTable';
+import './main.css';
 
-RD.render(<PeriodicTable />, document.querySelector('#main'))
+ReactDOM.render(<PeriodicTable />, document.querySelector('#main'))
