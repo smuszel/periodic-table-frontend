@@ -4,7 +4,7 @@ import Star from '../assets/star.svg';
 
 export const PeriodicTable = () => {
     const techsElements = techs.map((t, ix) => (
-        <div type={t.type} keyx={ix + 1} key={ix} className="tech-element-container">
+        <div type={t.type} keyx={ix + 1} key={ix} className={`tech-element-container ${t.normName}`}>
             <span>
                 <h1>{t.title}</h1>
                 <t.icon.default />

@@ -1,8 +1,8 @@
 body {
     --edge: 70px;
-    --frameworkColor: rgb(225, 225, 255);
-    --libraryColor: red;
-    --toolColor: green;
+    --frameworkColor: rgb(230, 230, 252);
+    --libraryColor: rgb(252, 221, 221);
+    --toolColor: rgb(194, 255, 194);
 }
 
 .table-container {
@@ -100,6 +100,10 @@ body {
 
 .tech-element-container[type="tool"] {
     background: var(--toolColor);
+}
+
+.ember > span > svg {
+    width: 25px;
 }
 
 .legend > div {

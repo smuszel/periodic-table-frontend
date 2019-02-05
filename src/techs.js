@@ -1,57 +1,70 @@
 const frameworks = [
-    ['React', 'Ra', 'facebook'],
-    ['Angular', 'Ng'],
-    ['Aurelia', 'Au'],
-    ['Ember.js', 'E', 'emberjs'],
-    ['Mithril.js', 'Mh', 'mithriljs'],
-    ['Backbone', 'Bc', 'jashkenas'],
-    ['Preact', 'Pr', 'developit'],
-    ['Vue', 'V', ''],
-    ['Svelte', 'Sv', ''],
-    ['Polymer', 'Pl'],
-    ['Knockout', 'Ko', ''],
-    ['Svelte', 'Sv', ''],
-    ['Bootstrap', 'B', ''],
+    ['React', 'Ra', 'facebook/%'],
+    ['Angular', 'Ng', '%/%'],
+    ['Aurelia', 'Au', '/framework'],
+    ['Ember', 'E', '%js/%.js'],
+    ['Mithril', 'Mh', '%js/%.js'],
+    ['Backbone', 'Bc', 'jashkenas/%'],
+    ['Preact', 'Pr', 'developit/%'],
+    ['Vue', 'V', 'vuejs/%'],
+    ['Svelte', 'Sv', '%js/%'],
+    ['Polymer', 'Pl', '%/%'],
+    ['Knockout', 'Ko', '%/%'],
+    ['Bootstrap', 'B', 'twbs/%'],
+    ['Jest', 'J', 'facebook/%'],
+    ['Mocha', 'Mc', '%js/%'],
+    ['Elm', 'El', '%/compiler']
 ];
 
 const tools = [
-    ['Sass', 'Ss', ''],
-    ['Less', 'Ls', ''],
-    ['Stylus', 'Sy', ''],
-    ['PostCSS', 'P', '']
+    ['Sass', 'Ss', '%/%'],
+    ['Less', 'Ls', '%/less.js'],
+    ['Stylus', 'Sy', '%/%'],
+    ['PostCSS', 'P', '%/%'],
+    ['Typescript', 'Ts', 'microsoft/%'],
+    ['Eslint', 'Et', '%/%'],
+    ['Stylelint', 'St', '%/%'],
+    ['Coffeescript', 'Cf', 'jashkenas/%'],
+    ['Flow', 'F', 'facebook/%'],
+    ['Npm', 'N', '%/%'],
+    ['Yarn', 'Ya', '%pkg/%'],
+    ['Gulp', 'Gu', '%js/%'],
+    ['Brunch', 'Br', '%/%'],
+    ['Grunt', 'Gr', '%js/%'],
+    ['Karma', 'Kr', '%/%'],
+    ['Instanbul', 'Ja', '%js/nyc'],
+    ['Tape', 'Tp', 'substack/%'],
+    ['Ava', 'A', '%js/%'],
+    ['Phantom', 'Ph', 'ariya/%js'],
+    ['Puppeteer', 'Pp', 'googlechrome/%'],
 ];
 
 const libraries = [
-    ['jQuery', '$', ''],
-    ['Redux', 'Rd', ''],
-    ['Mootools', 'Mo', ''],
-    ['D3', 'D', ''],
-    ['Foundation', 'Fu', ''],
-    ['Foundation', 'Fu', ''],
-    ['Foundation', 'Fu', ''],
-    ['Foundation', 'Fu', ''],
-    ['Foundation', 'Fu', ''],
-    ['Foundation', 'Fu', '']
+    ['jQuery', 'Q', '%/%'],
+    ['Redux', 'Rd', '%js/%'],
+    ['Mootools', 'Mo', '%/%-core'],
+    ['D3', 'D', '%/%'],
+    ['Bluebird', 'Bl', 'petkaantonov/%'],
+    ['Chai', 'Ch', '%js/%'],
+    ['Sinon', 'Si', '%js/%'],
+    // ['Foundation', 'Fu', '%/%'],
 
 ];
 
-const helper = type => ([name, title, author]) => ({
-    name,
-    title,
-    author: author || name,
-    type
-})
+const helper = type => ([name, title, ghBase]) => {
+    const normName = name.toLowerCase();
+    const home = `https://github.com/${ghBase.replace('%', normName)}`;
+    const icon = require(`../assets/${normName}.svg`);
+    const stars = 123;
+
+    return { name, normName, title, home, type, icon, stars };
+};
 
 export const techs = [
     ...frameworks.map(helper('framework')),
     ...libraries.map(helper('library')),
     ...tools.map(helper('tool'))
-].map(t => ({
-    ...t,
-    home: `https://github.com/${t.author}/${t.name}`,
-    icon: require(`../assets/${t.name}.svg`),
-    stars: 123
-}));
+];
 
 // export const techs = [
 
