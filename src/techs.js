@@ -13,6 +13,10 @@ const frameworks = [
     ['Bootstrap', 'B', 'twbs/%'],
     ['Jest', 'J', 'facebook/%'],
     ['Mocha', 'Mc', '%js/%'],
+    ['Meteor', 'Mr', '%/%'],
+    ['Next', 'Nx', 'zeit/%.js'],
+    ['Stencil', 'Sc', 'ionic-team/%'],
+    ['Phaser', 'Hs', 'photonstorm/%'],
     ['Elm', 'El', '%/compiler']
 ];
 
@@ -32,22 +36,48 @@ const tools = [
     ['Brunch', 'Br', '%/%'],
     ['Grunt', 'Gr', '%js/%'],
     ['Karma', 'Kr', '%/%'],
-    ['Instanbul', 'Ja', '%js/nyc'],
+    ['Istanbul', 'Ja', '%js/nyc'],
     ['Tape', 'Tp', 'substack/%'],
     ['Ava', 'A', '%js/%'],
     ['Phantom', 'Ph', 'ariya/%js'],
     ['Puppeteer', 'Pp', 'googlechrome/%'],
+    ['Babel', 'Bl', '%/%'],
+    ['Browserify', 'Bf', '%/%'],
+    ['Bower', 'Bw', '%/%'],
+    ['Jshint', 'Ht', '%/%'],
+    ['Prepack', 'Pc', 'facebook/%'],
+    ['Prettier', 'Pi', '%/%'],
+    ['Webpack', 'Wp', '%/%'],
+    ['Parcel', 'Pa', '%-bundler/%'],
+    ['Fusebox', 'Fb', 'fuse-box/fuse-box'],
+    ['Rollup', 'Rl', '%/%'],
+    ['Lodash', 'Si', '%js/%'],
+
 ];
 
 const libraries = [
-    ['jQuery', 'Q', '%/%'],
+    ['jQuery', 'Jq', '%/%'],
     ['Redux', 'Rd', '%js/%'],
     ['Mootools', 'Mo', '%/%-core'],
     ['D3', 'D', '%/%'],
     ['Bluebird', 'Bl', 'petkaantonov/%'],
     ['Chai', 'Ch', '%js/%'],
     ['Sinon', 'Si', '%js/%'],
-    // ['Foundation', 'Fu', '%/%'],
+    ['Lodash', 'Lo', '%/%'],
+    ['Underscore', 'U', 'jashkenas/%'],
+    ['ReactiveX', 'Rx', 'Reactive-Extensions/RxJS'],
+    ['Ramda', 'Rd', '%/%'],
+    ['Kefir', 'Kf', '%js/%.js'],
+    ['Bacon', 'Bc', '%js/%.js'],
+    ['Moment', 'Mn', '%/%'],
+    ['date-fns', 'Fn', '%/%'],
+    ['Three', 'T', 'mrdoob/%.js'],
+    ['Dragula', 'Dg', 'bevacqua/%'],
+    ['Draggable', 'Dr', 'shopify/%'],
+    ['Tensorflow', 'Tf', '%/tfjs-core'],
+    ['Apollo', 'Al', '%graphql/%-client'],
+    ['Mobx', 'Mx', '%js/%'],
+    ['i18next', 'In', '%/%'],
 
 ];
 
@@ -62,316 +92,6 @@ const helper = type => ([name, title, ghBase]) => {
 
 export const techs = [
     ...frameworks.map(helper('framework')),
+    ...tools.map(helper('tool')),
     ...libraries.map(helper('library')),
-    ...tools.map(helper('tool'))
 ];
-
-// export const techs = [
-
-//     {
-//         name: 'graphql',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-//     {
-//         name: 'redux',
-//         title: 'Rd',
-//         stars: '46,622',
-//         icon: require('../assets/redux.svg')
-//     },
-// ]
