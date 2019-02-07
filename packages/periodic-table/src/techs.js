@@ -1,7 +1,7 @@
 const frameworks = [
     ['React', 'Ra', 'facebook/%'],
     ['Angular', 'Ng', '%/%'],
-    ['Aurelia', 'Au', '/framework'],
+    ['Aurelia', 'Au', '%/framework'],
     ['Ember', 'E', '%js/%.js'],
     ['Mithril', 'Mh', '%js/%.js'],
     ['Backbone', 'Bc', 'jashkenas/%'],
@@ -51,7 +51,7 @@ const tools = [
     ['Parcel', 'Pa', '%-bundler/%'],
     ['Fusebox', 'Fb', 'fuse-box/fuse-box'],
     ['Rollup', 'Rl', '%/%'],
-    ['Lodash', 'Si', '%js/%'],
+    // ['Lodash', 'Si', '%js/%'],
 
 ];
 
@@ -83,7 +83,7 @@ const libraries = [
 
 const helper = type => ([name, title, ghBase]) => {
     const normName = name.toLowerCase();
-    const home = `https://github.com/${ghBase.replace('%', normName)}`;
+    const home = `https://github.com/${ghBase.replace(/%/g, normName)}`;
     const icon = require(`../assets/${normName}.svg`);
     const stars = 123;
 

@@ -4,16 +4,22 @@ import Star from '../assets/star.svg';
 
 export const PeriodicTable = () => {
     const techsElements = techs.map((t, ix) => (
-        <div type={t.type} keyx={ix + 1} key={ix} className={`tech-element-container ${t.normName}`}>
+        <a
+            type={t.type}
+            key={ix}
+            href={t.home}
+            target="blank"
+            className={`tech-element-container ${t.normName}`}
+        >
             <span>
                 <h1>{t.title}</h1>
-                <t.icon.default />
+                <t.icon.default className={`tech-icon ${t.normName}`} />
             </span>
             <div>
                 <h2>{t.name}</h2>
-                <p> <Star />{t.stars}</p>
+                <p> <Star className="star" />{t.stars}</p>
             </div>
-        </div>));
+        </a>));
 
     return (
         <div className="table-container">
@@ -24,4 +30,5 @@ export const PeriodicTable = () => {
                 <div tool=""><span></span>Tools</div>
             </div>
         </div>
-)}
+    );
+};
