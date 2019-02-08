@@ -7,4 +7,6 @@ app.get('/', (req, res) => {
     res.send('exp');
 });
 
-app.listen(8001, '0.0.0.0');
+module.exports = () => {
+    app.listen(8001, '0.0.0.0');
+}
