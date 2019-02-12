@@ -1,7 +1,7 @@
 const Mongo = require('mongodb').MongoClient;
-const applySeeds = require('./applySeeds');
 const job = require('./job');
-const collectionsMetadata = require('./collectionsMetadata');
+const collectionNames = require('./collectionNames');
+const initialRepos = require('../seed/initial.json').repos; 
 
 const dbName = 'GithubRepos';
 const dbUrl = `mongodb://localhost/${dbName}`;
@@ -11,8 +11,8 @@ const main = async () => {
     const client = await Mongo.connect(dbUrl);
     const db = await client.db(dbName);
 
-    await applySeeds(db, collectionsMetadata);
-    setInterval(() => job(db, collectionsMetadata), interval);
+    await applySeeds(db, initialRepos);
+    setInterval(() => job(db), interval);
 }
 
 main();
