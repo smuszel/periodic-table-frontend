@@ -1,9 +1,14 @@
 const Mongo = require('mongodb').MongoClient;
 const job = require('./job');
-const collectionNames = require('./collectionNames');
-const initialRepos = require('../seed/initial.json').repos; 
+const seed = require('../seed/initial.json'); 
+const _fetch = require('node-fetch');
+const fetch = url => _fetch(url, {
+    headers: {
+        Accept: 'application/json '
+    }
+}).then(b => b.json());
 
-const dbName = 'GithubRepos';
+const dbName = 'sandbox';
 const dbUrl = `mongodb://localhost/${dbName}`;
 const interval = 1000 * 60 * 60 * 24;
 
@@ -11,8 +16,8 @@ const main = async () => {
     const client = await Mongo.connect(dbUrl);
     const db = await client.db(dbName);
 
-    await applySeeds(db, initialRepos);
-    setInterval(() => job(db), interval);
+    await applySeeds(db, seed);
+    setInterval(() => job(db, fetch), interval);
 }
 
 main();

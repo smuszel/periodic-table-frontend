@@ -7,10 +7,10 @@ const zipValues = (obj1, obj2) => {
     });
 }
 
-module.exports = async (db, repos) => {
+module.exports = async (db, seed) => {
     const inits = {
-        main: repos,
-        dynamic: repos.map(getDynamicInfo),
+        main: seed.repos,
+        dynamic: repos.map(getDynamicInfo, seed.date),
         errors: [{}],
     }
 

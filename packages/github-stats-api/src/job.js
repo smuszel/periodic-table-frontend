@@ -1,14 +1,5 @@
-const _fetch = require('node-fetch');
 const getDynamicInfo = require('./getDynamicInfo');
 const meta = require('./collectionNames');
-const fetch = url => _fetch(url, {
-    headers: {
-        Accept: 'application/json '
-    }
-}).then(b => b.json());
-// remove fetch
-
-const fetchDynamicInfo = repo => fetch(repo.url).then(getDynamicInfo);
 
 const createErrEntry = (err, repo) => ({
     where: repo.name,
@@ -16,14 +7,12 @@ const createErrEntry = (err, repo) => ({
     original: JSON.stringify(err),
 })
 
-module.exports = db => {
-    const cursor = db.collection(meta.main).find();
-    const insertToDI = xs => db.collection(meta.dynamic).insertMany(xs);
-    const insertToErr = xs => db.collection(meta.errors).insertMany(xs);
+module.exports = async (db, fetch) => {
+    const now = new Date();
+    const oldRepos = await db.collection(meta.main).find().toArray();
+    const insertToDI = freshRepo => db.collection(meta.dynamic).insertOne(getDynamicInfo(freshRepo, now));
+    const insertToErr = (err, repo) => db.collection(meta.errors).insertOne(createErrEntry(err, repo));
+    const ps = oldRepos.map(repo => fetch(repo.url).then(insertToDI).catch(err => insertToErr(err, repo)));
 
-    cursor.each((_, repo) => {
-        fetchDynamicInfo(repo)
-            .then(insertToDI)
-            .catch(err => insertToErr(createErrEntry(err, repo)))
-    });
-};
+    return Promise.all(ps);
+}
