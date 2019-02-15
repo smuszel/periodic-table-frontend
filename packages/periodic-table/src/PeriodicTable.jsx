@@ -1,8 +1,9 @@
-import { techs } from './techs';
+import _techs from './techs';
 import React from 'react';
-import Star from '../assets/star.svg';
+import Suspender from './Suspender';
+import Star from './star.svg';
 
-export const PeriodicTable = () => {
+const _PeriodicTable = techs => {
     const techsElements = techs.map((t, ix) => (
         <a
             type={t.type}
@@ -13,6 +14,7 @@ export const PeriodicTable = () => {
         >
             <span>
                 <h1>{t.title}</h1>
+                <img src="" alt=""/>
                 <t.icon.default className={`tech-icon ${t.normName}`} />
             </span>
             <div>
@@ -31,4 +33,12 @@ export const PeriodicTable = () => {
             </div>
         </div>
     );
+};
+
+const Loader = () => {
+    return <div>loading...</div>
+}
+
+export const PeriodicTable = () => {
+    return <Suspender main={_PeriodicTable} loader={Loader} pms={_techs} />
 };

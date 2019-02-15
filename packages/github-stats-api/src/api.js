@@ -2,16 +2,21 @@ const app = require('express')();
 const cors = require('cors')();
 const meta = require('./collectionNames');
 
+const $lookup = {
+    from: meta.dynamic,
+    localField: 'name',
+    foreignField: 'name',
+    as: 'history'
+};
+
 let _db;
 
 app.use(cors);
 
-app.get('/', async (req, res) => {
-    const mainRepos = await _db.collection(meta.main).find().forEach(repo => {
-        _db.collection(meta.dynamic).find();
+app.get('/', (req, res) => {
+    _db.collection(meta.main).aggregate([{ $lookup }]).then(repos => {
+        res.json(repos);
     });
-    const freshReposJoined = mainRepos.fi
-    res.send('exp');
 });
 
 module.exports = db => {
