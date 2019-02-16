@@ -7,8 +7,5 @@
     "dependencies": {
         "mongodb": "3.1.13",
         "node-fetch": "2.3.0"
-    },
-    "devDependencies": {
-        "mongodb-memory-server": "3.0.0"
     }
 }

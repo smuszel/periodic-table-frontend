@@ -1,9 +1,17 @@
 const assert = require('assert');
 const createMockDb = require('../helpers/createTestDb');
+const apply = require('./applySeeds');
+const seed = require('./initial.json');
 
-module.exports = async () => {
+const collNames = {
+    main: 'm',
+    dynamic: 'd',
+    error: 'e'
+};
+
+module.exports = (async () => {
     const db = await createMockDb();
-    await applySeed(db, repos);
+    await apply(collNames, db, seed);
 
     const namesInDb = (await db.listCollections().toArray()).map(c => c.name);
     const docs = await Promise.all(namesInDb.map(cn => {
@@ -11,7 +19,7 @@ module.exports = async () => {
     }));
 
     const totalNumber = docs.reduce((acc, doc) => [...acc, ...doc], []).length;
-    const allInitsAreAdded = totalNumber === repos.length * 2 + 1;
+    const allInitsAreAdded = totalNumber === seed.repos.length * 2 + 1;
 
     assert(allInitsAreAdded, 'failed to add inits');
-}
+});

@@ -1,21 +1,22 @@
-const job = require('./src/job');
+const job = require('./job');
 const createTestDb = require('../helpers/createTestDb');
 const assert = require('assert');
+const seed = require('../seed/initial.json');
+const repoFixture = seed.repos[0];
 
-const repoFixture = {
-    url: 'abc',
-    stargazers_count: 1,
-    size: 2,
-    forks_count: 3,
-    open_issues: 4,
-};
-
-module.exports = async () => {
+module.exports = (async () => {
     const db = await createTestDb();
-    await db.collection('main').insertOne(repoFixture)
-    const fetch = () => Promise.resolve(repoFixture);
-    await job(db, fetch);
-    const nAdded = await db.collection(meta.dynamic).find().count();
+    const collections = {
+        main: db.collection('m'),
+        dynamic: db.collection('d'),
+        error: db.collection('e'),
+    };
 
-    assert(nAdded === 1);
-};
+    await collections.main.insertOne(repoFixture)
+    const fetch = () => Promise.resolve(repoFixture);
+    await job(fetch, collections);
+    const xs = await collections.dynamic.find().toArray();
+    const instance = xs[0];
+
+    assert(!!instance);
+});

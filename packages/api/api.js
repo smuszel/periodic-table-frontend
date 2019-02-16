@@ -1,16 +1,17 @@
-const $lookup = {
-    from: meta.dynamic,
-    localField: 'name',
-    foreignField: 'name',
-    as: 'history'
-};
+const app = require('express')();
+const cors = require('cors')();
+const rootRoute = require('./rootRoute');
+app.use(cors);
 
-module.exports = (port, app, mainCollection) => {
-    app.get('/', (req, res) => {
-        mainCollection.aggregate([{ $lookup }]).then(repos => {
-            res.json(repos);
-        });
-    });
+module.exports = ({ port, mainCollection, dynamicCollectionName }) => {
+    const lookup = {
+        from: dynamicCollectionName,
+        localField: 'name',
+        foreignField: 'name',
+        as: 'history'
+    };
+
+    app.get('/', rootRoute(lookup, mainCollection));
 
     app.listen(port, '0.0.0.0');
 }

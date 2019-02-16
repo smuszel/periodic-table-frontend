@@ -2,6 +2,7 @@
     "name": "periodic-table",
     "private": true,
     "devDependencies": {
-        "lerna": "3.10.7"
+        "lerna": "3.13.0",
+        "@types/node": "11.9.4"
     }
 }
