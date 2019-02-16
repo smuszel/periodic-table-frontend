@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export default class extends React.Component {
-
+    
     state = { res: null, stage: 0 };
     renderers = [
         this.props.loader || (() => null),

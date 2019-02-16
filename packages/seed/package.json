@@ -1,10 +1,10 @@
 {
     "name": "pt-backend",
     "scripts": {
-        "start": "echo start",
         "test": "node --inspect-brk -e \"require('./test.spec.js')()\""
     },
     "dependencies": {
+        "dotenv": "^6.2.0",
         "mongodb": "3.1.13",
         "node-fetch": "2.3.0"
     }

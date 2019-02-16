@@ -1,7 +1,7 @@
 const Mongo = require('mongodb').MongoClient;
 const job = require('./job');
 const _fetch = require('node-fetch');
-const cs = require('../helpers/connectionString');
+const cs = require('../../helpers/createConnectionString')(process.env);
 const fetch = url => _fetch(url, {
     headers: {
         Accept: 'application/json '
@@ -10,7 +10,7 @@ const fetch = url => _fetch(url, {
 
 const main = async () => {
     const client = await Mongo.connect(cs);
-    const db = await client.db(dbname);
+    const db = await client.db(process.env.DB_NAME);
     const collections = {
         main: db.collection(process.env.MAIN_COLLECTION_NAME),
         dynamic: db.collection(process.env.DYNAMIC_COLLECTION_NAME),

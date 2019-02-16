@@ -1,4 +1,4 @@
-const job = require('./job');
+const job = require('./src/job');
 const createTestDb = require('../helpers/createTestDb');
 const assert = require('assert');
 const seed = require('../seed/initial.json');

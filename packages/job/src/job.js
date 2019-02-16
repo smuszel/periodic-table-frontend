@@ -1,4 +1,4 @@
-const getDynamicInfo = require('../helpers/getDynamicInfo');
+const getDynamicInfo = require('../../helpers/getDynamicInfo');
 
 const createErrEntry = (err, repo) => ({
     where: repo.name,

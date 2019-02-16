@@ -3,7 +3,7 @@ const cors = require('cors')();
 const rootRoute = require('./rootRoute');
 app.use(cors);
 
-module.exports = ({ port, mainCollection, dynamicCollectionName }) => {
+module.exports = ({ mainCollection, dynamicCollectionName }) => {
     const lookup = {
         from: dynamicCollectionName,
         localField: 'name',
@@ -13,5 +13,5 @@ module.exports = ({ port, mainCollection, dynamicCollectionName }) => {
 
     app.get('/', rootRoute(lookup, mainCollection));
 
-    app.listen(port, '0.0.0.0');
+    app.listen(80, '0.0.0.0');
 }

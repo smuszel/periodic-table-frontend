@@ -1,5 +1,5 @@
 const assert = require('assert');
-const rootRoute = require('./rootRoute');
+const rootRoute = require('./src/rootRoute');
 const createTestDb = require('../helpers/createTestDb');
 const getDynamicInfo = require('../helpers/getDynamicInfo');
 const seed = require('../seed/initial.json');

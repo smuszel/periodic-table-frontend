@@ -2,8 +2,9 @@
     "compilerOptions": {
         "allowJs": true,
         "checkJs": true,
-        "lib": ["esnext"],
-        "outDir": "./dist"
+        "lib": ["esnext", "dom"],
+        "outDir": "./dist",
+        "jsx": "react"
     },
     "exclude": ["node_modules"]
 }

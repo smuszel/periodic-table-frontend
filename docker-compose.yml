@@ -1,0 +1,8 @@
+version: '3'
+services:
+  front:
+    build: ./packages/front
+  api:
+    build: ./packages/api
+  job:
+    build: ./packages/job

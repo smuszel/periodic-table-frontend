@@ -1,7 +1,7 @@
 {
     "name": "pt-api",
     "scripts": {
-        "start": "echo start",
+        "start": "node ./src/index.js",
         "test": "node -e \"require('./test.spec.js')()\""
     },
     "dependencies": {
