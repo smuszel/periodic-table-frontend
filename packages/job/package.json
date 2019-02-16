@@ -2,16 +2,13 @@
     "name": "pt-backend",
     "scripts": {
         "start": "echo start",
-        "test": "tape ./tests/**/*.spec.js"
+        "test": "node -e \"require('./test.spec.js')()\""
     },
     "dependencies": {
-        "express": "4.16.4",
-        "cors": "2.8.5",
         "mongodb": "3.1.13",
         "node-fetch": "2.3.0"
     },
     "devDependencies": {
-        "tape": "4.10.0",
         "mongodb-memory-server": "3.0.0"
     }
 }
