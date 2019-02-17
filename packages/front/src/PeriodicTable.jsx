@@ -10,15 +10,13 @@ const _PeriodicTable = techs => {
             key={ix}
             href={t.home}
             target="blank"
-            className={`tech-element-container ${t.normName}`}
+            className={`tech-element-container`}
         >
             <span>
-                <h1>{t.title}</h1>
-                <img src="" alt=""/>
-                <t.icon.default className={`tech-icon ${t.normName}`} />
+                <h1>{t.symbolicTitle}</h1>
             </span>
             <div>
-                <h2>{t.name}</h2>
+                <h2>{t.normName}</h2>
                 <p> <Star className="star" />{t.stars}</p>
             </div>
         </a>));
@@ -26,11 +24,11 @@ const _PeriodicTable = techs => {
     return (
         <div className="table-container">
             {techsElements}
-            <div className="legend">
-                <div framework=""><span></span>Frameworks</div>
-                <div library=""><span></span>Libraries</div>
-                <div tool=""><span></span>Tools</div>
-            </div>
+            <legend>
+                <label className="framework"><span></span>Frameworks</label>
+                <label className="library"><span></span>Libraries</label>
+                <label className="tool"><span></span>Tools</label>
+            </legend>
         </div>
     );
 };
@@ -39,6 +37,6 @@ const Loader = () => {
     return <div>loading...</div>
 }
 
-export const PeriodicTable = () => {
+export default () => {
     return <Suspender main={_PeriodicTable} loader={Loader} pms={_techs} />
 };

@@ -1,13 +1,8 @@
 const webpack = require('webpack');
-const htmlplugin = require('html-webpack-plugin');
+const HtmlPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-    entry: path.resolve(__dirname, 'src', 'main.js'),
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
-    },
     resolve: {
         extensions: ['.js', '.jsx', '.svg', '.css']
     },
@@ -28,9 +23,13 @@ module.exports = {
             }
         ]
     },
+    devtool: 'source-map',
     plugins: [
-        new htmlplugin({
+        new HtmlPlugin({
             template: path.resolve('index.html')
+        }),
+        new webpack.DefinePlugin({
+            '__webpack_provide.apiUrl': JSON.stringify(process.env.API_URL)
         }),
         new webpack.ProgressPlugin()
     ]

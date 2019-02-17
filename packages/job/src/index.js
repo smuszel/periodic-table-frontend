@@ -1,23 +1,23 @@
-const Mongo = require('mongodb').MongoClient;
+const { MongoClient } = require('mongodb');
 const job = require('./job');
 const _fetch = require('node-fetch');
 const cs = require('../../helpers/createConnectionString')(process.env);
-const fetch = url => _fetch(url, {
-    headers: {
-        Accept: 'application/json '
-    }
-}).then(b => b.json());
+const cst = require('../../helpers/buildArgs');
+const token = process.env.GH_TOKEN;
+const headers = { Accept: 'application/json', Authorization: `token ${token}` };
+const fetch = url => _fetch(url, { headers }).then(b => b.json());
 
 const main = async () => {
-    const client = await Mongo.connect(cs);
+    const client = await MongoClient.connect(cs);
     const db = await client.db(process.env.DB_NAME);
     const collections = {
-        main: db.collection(process.env.MAIN_COLLECTION_NAME),
-        dynamic: db.collection(process.env.DYNAMIC_COLLECTION_NAME),
-        error: db.collection(process.env.ERROR_COLLECTION_NAME),
+        main: db.collection(cst.MAIN_COLLECTION_NAME),
+        dynamic: db.collection(cst.DYNAMIC_COLLECTION_NAME),
+        error: db.collection(cst.ERROR_COLLECTION_NAME),
     };
 
-    setInterval(() => job(fetch, collections), +process.env.JOB_INTERVAL);
+    const r = await collections.dynamic.find({ name: 'react' }).toArray();
+    setInterval(() => job(fetch, collections), cst.JOB_INTERVAL);
 }
 
 main();

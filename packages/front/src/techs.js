@@ -1,7 +1,12 @@
-const apiUrl = '';
-const maxBy = xs => xs.reduce((acc, x) => acc.date >= x.date ? acc : xs, {});
+const maxByDate = xs => xs.reduce((acc, x) => acc.date >= x.date ? acc : x, {});
 
-export default fetch(apiUrl)
-    .then(r => r.json())
-    .then(r => r.techs.map(t => ({ ...t, ...maxBy(t.history) })))
-    ;
+export default (async () => {
+    const raw = await fetch(__webpack_provide.apiUrl).then(r => r.json());
+    const processed = raw.map(t => {
+        const latestHistoryEntry = maxByDate(t.history);
+        
+        return { ...t, ...latestHistoryEntry };
+    });
+
+    return processed;
+})();

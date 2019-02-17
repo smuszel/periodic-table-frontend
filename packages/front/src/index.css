@@ -18,17 +18,6 @@ a {
     grid-auto-flow: column;
 }
 
-.legend {
-    grid-column: 3/13;
-    grid-row: 1/4;
-    padding: 10px;
-    font-size: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: auto;
-}
-
 .tech-element-container {
     border: 1px solid purple;
     padding: 3px;
@@ -102,27 +91,38 @@ a {
     background: var(--toolColor);
 }
 
-.legend > div {
+legend {
+    grid-column: 3/13;
+    grid-row: 1/4;
+    padding: 10px;
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+}
+
+legend > label {
     display: flex;
     align-items: center;
     padding: 10px;
 }
 
-.legend > div > span {
+legend > label > span {
     width: 30px;
     height: 30px;
     margin-right: 5px;
 }
 
-.legend > div[framework] > span {
+legend > .framework > span {
     background: var(--frameworkColor);
 }
 
-.legend > div[library] > span {
+legend > .library > span {
     background: var(--libraryColor);
 }
 
-.legend > div[tool] > span {
+legend > .tool > span {
     background: var(--toolColor);
 }
 
@@ -131,7 +131,7 @@ a {
     height: 9px;
 }
 
-.tech-icon {
+/* .tech-icon {
     width: 20px;
     height: 20px;
 }
@@ -173,4 +173,4 @@ a {
 
 .babel > span > svg {
     width: 30px;
-}
+} */

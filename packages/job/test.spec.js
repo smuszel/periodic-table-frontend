@@ -19,4 +19,5 @@ module.exports = (async () => {
     const instance = xs[0];
 
     assert(!!instance);
-});
+    process.exit();
+})();

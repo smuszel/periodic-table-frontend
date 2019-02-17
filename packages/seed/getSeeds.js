@@ -1,15 +1,13 @@
 const _fetch = require('node-fetch');
 const fs = require('fs');
-const path = require('path');
-
-const token = process.argv[2];
-!token && process.exit(1);
-
+const token = process.env.GH_TOKEN;
+// const path = require('path');
+!token && process.exit(); 
 const fetch = url => {
     return _fetch(url, {
         headers: {
             Accept: 'application/json',
-            Authorization: token
+            Authorization: `token ${token}`
         }
     }).then(b => b.json());
 }
@@ -51,7 +49,7 @@ const tools = [
     ['Gulp', 'Gu', '%js/%'],
     ['Brunch', 'Br', '%/%'],
     ['Grunt', 'Gr', '%js/%'],
-    ['Karma', 'Kr', '%/%'],
+    ['Karma', 'Kr', '%-runner/%'],
     ['Istanbul', 'Ja', '%js/nyc'],
     ['Tape', 'Tp', 'substack/%'],
     ['Ava', 'A', '%js/%'],
@@ -81,12 +79,12 @@ const libraries = [
     ['Underscore', 'U', 'jashkenas/%'],
     ['ReactiveX', 'Rx', 'Reactive-Extensions/RxJS'],
     ['Ramda', 'Rd', '%/%'],
-    ['Kefir', 'Kf', '%js/%.js'],
+    ['Kefir', 'Kf', '%js/%'],
     ['Bacon', 'Bc', '%js/%.js'],
     ['Moment', 'Mn', '%/%'],
     ['date-fns', 'Fn', '%/%'],
     ['Three', 'T', 'mrdoob/%.js'],
-    ['Dragula', 'Dg', 'bevacqua/%'],
+    ['Dragula', 'Dg', 'bevacqua/dragula'],
     ['Draggable', 'Dr', 'shopify/%'],
     ['Tensorflow', 'Tf', '%/tfjs-core'],
     ['Apollo', 'Al', '%graphql/%-client'],
@@ -95,13 +93,13 @@ const libraries = [
     ['Anime', 'An', 'juliangarnier/%']
 ];
 
-const imagesDir = path.resolve(__dirname, 'images')
-const readImage = normName => fs.readFileSync(path.join(imagesDir, `${normName}.svg`), 'utf8');
+// const imagesDir = path.resolve(__dirname, 'images')
+// const readImage = normName => fs.readFileSync(path.join(imagesDir, `${normName}.svg`), 'utf8');
 
 const helper = type => ([name, symbolicTitle, ghBase]) => {
     const normName = name.toLowerCase();
     const apiUrl = `https://api.github.com/repos/${ghBase.replace(/%/g, normName)}`;
-    const icon = readImage(normName);
+    const icon = null;
 
     return { normName, symbolicTitle, apiUrl, type, icon };
 };
@@ -117,6 +115,8 @@ const ps = techs.map(t => fetch(t.apiUrl)
     .catch(err => ({ ...t, failed: true }))
 );
 
+const date = new Date().getTime();
+
 Promise.all(ps).then(repos => {
-    fs.writeFileSync('inital.json', JSON.stringify({ repos }));
-})
+    fs.writeFileSync('initial.json', JSON.stringify({ date, repos }));
+});

@@ -22,4 +22,5 @@ module.exports = (async () => {
     const allInitsAreAdded = totalNumber === seed.repos.length * 2 + 1;
 
     assert(allInitsAreAdded, 'failed to add inits');
-});
+    process.exit();
+})();

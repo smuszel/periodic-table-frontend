@@ -2,10 +2,15 @@
     "name": "pt-backend",
     "scripts": {
         "start": "node ./src/index.js",
+        "build": "webpack --target node --devtool=none --mode=production",
         "test": "node -e \"require('./test.spec.js')()\""
     },
     "dependencies": {
         "mongodb": "3.1.13",
         "node-fetch": "2.3.0"
+    },
+    "devDependencies": {
+        "webpack": "4.29.4",
+        "webpack-cli": "3.2.3"
     }
 }
