@@ -8,7 +8,7 @@ const headers = { Accept: 'application/json', Authorization: `token ${token}` };
 const fetch = url => _fetch(url, { headers }).then(b => b.json());
 
 const main = async () => {
-    const client = await MongoClient.connect(cs);
+    const client = await MongoClient.connect(cs, { useNewUrlParser: true });
     const db = await client.db(process.env.DB_NAME);
     const collections = {
         main: db.collection(cst.MAIN_COLLECTION_NAME),
@@ -16,7 +16,6 @@ const main = async () => {
         error: db.collection(cst.ERROR_COLLECTION_NAME),
     };
 
-    const r = await collections.dynamic.find({ name: 'react' }).toArray();
     setInterval(() => job(fetch, collections), cst.JOB_INTERVAL);
 }
 
