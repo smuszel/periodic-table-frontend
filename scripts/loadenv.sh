@@ -1,0 +1,1 @@
+export `cat /etc/periodic-table-of-frontend.env | xargs`

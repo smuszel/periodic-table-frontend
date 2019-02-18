@@ -7,14 +7,8 @@ declare module "*.svg" {
     export default class extends React.Component<any, any> { }
 }
 
-declare namespace __webpack_provide {
-    export const apiUrl: string;
-}
-
 declare namespace NodeJS {
     export interface ProcessEnv {
-        FRONT_PORT: string;
-        API_PORT: string;
         API_URL: string;
         DB_NAME: string;
         DB_USERNAME: string;

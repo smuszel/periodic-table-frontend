@@ -1,7 +1,0 @@
-FROM nginx:alpine
-WORKDIR /app
-# COPY ./dist/* ./
-COPY ./hello_world.js ./
-COPY ./nginx.conf /etc/nginx
-EXPOSE 80
-CMD ["nginx", "-g", "deamon off;"]

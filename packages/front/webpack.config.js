@@ -2,7 +2,8 @@ const webpack = require('webpack');
 const HtmlPlugin = require('html-webpack-plugin');
 const path = require('path');
 
-module.exports = {
+const client = (env, argv) => ({
+    output: { filename: 'bundle.js' },
     resolve: {
         extensions: ['.js', '.jsx', '.svg', '.css']
     },
@@ -24,13 +25,20 @@ module.exports = {
         ]
     },
     devtool: 'source-map',
-    plugins: [
-        new HtmlPlugin({
+    target: 'web',
+    plugins: [,
+        argv.mode !== 'production' && new HtmlPlugin({
             template: path.resolve('index.html')
         }),
-        new webpack.DefinePlugin({
-            '__webpack_provide.apiUrl': JSON.stringify(process.env.API_URL)
-        }),
         new webpack.ProgressPlugin()
-    ]
+    ].filter(x => !!x)
+})
+
+const server = {
+    entry: './src/server.js',
+    output: { filename: 'main.js' },
+    target: 'node',
+    node: { __dirname: false }
 }
+
+module.exports = [client, server];

@@ -1,4 +1,5 @@
 FROM mhart/alpine-node:11
 WORKDIR /app
-COPY ./dist/main.js main.js
+COPY . .
+EXPOSE 80
 CMD ["node", "main.js"]

@@ -1,12 +1,17 @@
 {
     "name": "periodic-table",
     "private": true,
+    "scripts": {
+        "build": "sh ./scripts/build.sh 'front api job'"
+    },
     "devDependencies": {
-        "@types/mongodb": "^3.1.19",
+        "typescript": "3.3.3",
+        "@types/express": "4.16.1",
+        "@types/mongodb": "3.1.19",
         "@types/node": "11.9.4",
         "@types/react": "16.3.13",
+        "@types/react-dom": "^16.8.2",
         "dotenv": "6.2.0",
-        "lerna": "3.13.0",
         "node-fetch": "2.3.0"
     }
 }

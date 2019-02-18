@@ -1,4 +1,4 @@
-import _techs from './techs';
+import getTechs from './techs';
 import React from 'react';
 import Suspender from './Suspender';
 import Star from './star.svg';
@@ -37,6 +37,6 @@ const Loader = () => {
     return <div>loading...</div>
 }
 
-export default () => {
-    return <Suspender main={_PeriodicTable} loader={Loader} pms={_techs} />
+export default ({ apiurl }) => {
+    return <Suspender main={_PeriodicTable} loader={Loader} pms={getTechs(apiurl)} />
 };

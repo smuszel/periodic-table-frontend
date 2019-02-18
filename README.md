@@ -5,3 +5,4 @@ Potential improvements:
 * figure out how to implement ava testing with setting breakpoints and debugging in vsc
 * figure out how to make build on external serve on commits / CI pipieline
 * figure out how to automate seeding process / abstract out the database
+* use lerna 
