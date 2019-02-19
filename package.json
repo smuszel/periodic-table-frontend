@@ -3,7 +3,7 @@
     "private": true,
     "scripts": {
         "build": "sh ./scripts/build.sh 'front api job'",
-        "docs": "cp ./packages/front/dist/* ./docs"
+        "docs": "cp ./packages/front/dist/bundle.js ./docs"
     },
     "devDependencies": {
         "typescript": "3.3.3",
