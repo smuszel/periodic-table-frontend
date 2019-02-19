@@ -2,7 +2,8 @@
     "name": "periodic-table",
     "private": true,
     "scripts": {
-        "build": "sh ./scripts/build.sh 'front api job'"
+        "build": "sh ./scripts/build.sh 'front api job'",
+        "docs": "cp ./packages/front/dist/* ./docs"
     },
     "devDependencies": {
         "typescript": "3.3.3",
