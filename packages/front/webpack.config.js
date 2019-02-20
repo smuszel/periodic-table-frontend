@@ -3,7 +3,10 @@ const HtmlPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 const client = (env, argv) => ({
-    output: { filename: 'bundle.js' },
+    output: {
+        filename: 'bundle.js',
+        chunkFilename: 'bundle_[chunkhash].js'
+    },
     resolve: {
         extensions: ['.js', '.jsx', '.svg', '.css']
     },
