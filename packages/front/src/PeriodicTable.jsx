@@ -1,4 +1,4 @@
-import getTechs from './techs';
+import getTechs from './getTechs';
 import React from 'react';
 import Suspender from './Suspender';
 import Star from './star.svg';

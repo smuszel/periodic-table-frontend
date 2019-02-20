@@ -9,9 +9,9 @@ const templ = `
         <meta name="not-htmlplugin">
         <title>Periodic Table</title>
     </head>
-    <body>
-        <div apiurl="${process.env.API_URL}" id="main"></div>
-    <script type="text/javascript" src="bundle.js"></script></body>
+    <body apiurl="${process.env.API_URL}" >
+        <script type="text/javascript" src="bundle.js"></script>
+    </body>
     </html>
 `
 const app = express();
@@ -22,4 +22,4 @@ app.get('/', (req, res) => {
     res.send(templ);
 });
 
-app.listen(80, '0.0.0.0')
+app.listen(80, '0.0.0.0');

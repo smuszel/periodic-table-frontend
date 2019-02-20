@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import PeriodicTable from './PeriodicTable';
 import './index.css';
 
-const main = document.querySelector('#main');
-const apiurl = main.getAttribute('apiurl');
+const apiurl = document.body.getAttribute('apiurl');
+const main = document.createElement('main');
+document.body.appendChild(main);
 ReactDOM.render(<PeriodicTable apiurl={apiurl} />, main);

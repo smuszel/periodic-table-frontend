@@ -26,10 +26,8 @@ const client = (env, argv) => ({
     },
     devtool: 'source-map',
     target: 'web',
-    plugins: [,
-        argv.mode !== 'production' && new HtmlPlugin({
-            template: path.resolve('index.html')
-        }),
+    plugins: [
+        argv.mode !== 'production' && new HtmlPlugin(),
         new webpack.ProgressPlugin()
     ].filter(x => !!x)
 })
