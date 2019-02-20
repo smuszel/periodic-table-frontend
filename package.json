@@ -3,7 +3,7 @@
     "private": true,
     "scripts": {
         "start": "sh ./scripts/main.sh start",
-        "build": "sh ./scripts/main.sh build 'front api job'",
+        "build": "sh ./scripts/main.sh build",
         "dockerize": "sh ./scripts/dockerize.sh 'front api job'",
         "pages": "cp ./packages/front/dist/bundle*.js ./docs"
     },

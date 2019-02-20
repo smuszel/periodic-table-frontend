@@ -11,4 +11,4 @@ else
     ps=$2
 fi
 
-for p in $ps; do f $p $1; done
+for p in $ps; do f $p $1 & done
